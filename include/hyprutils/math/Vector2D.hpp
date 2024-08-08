@@ -7,10 +7,16 @@ namespace Hyprutils {
     namespace Math {
         class Vector2D {
           public:
-            Vector2D(double, double);
-            Vector2D(int, int);
+            constexpr Vector2D(double xx, double yy) {
+                x = xx;
+                y = yy;
+            }
+            constexpr Vector2D(int xx, int yy) {
+                x = xx;
+                y = yy;
+            }
             Vector2D();
-            ~Vector2D();
+            constexpr ~Vector2D() {};
 
             double x = 0;
             double y = 0;
@@ -20,6 +26,12 @@ namespace Hyprutils {
 
             Vector2D operator+(const Vector2D& a) const {
                 return Vector2D(this->x + a.x, this->y + a.y);
+            }
+            Vector2D operator+(const float& a) const {
+                return Vector2D(this->x + a, this->y + a);
+            }
+            Vector2D operator-(const float& a) const {
+                return Vector2D(this->x - a, this->y - a);
             }
             Vector2D operator-(const Vector2D& a) const {
                 return Vector2D(this->x - a.x, this->y - a.y);
